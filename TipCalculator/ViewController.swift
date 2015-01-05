@@ -36,6 +36,7 @@ class ViewController: UIViewController {
         }else {
             billTextField.frame = CGRectMake(15, 180, screenWidth-30, 100)
         }
+        billTextField.tintColor = UIColor.brownColor()
         tipSegmentedControl.frame = CGRectMake(15, 200, screenWidth-30, 30)
         tipLabel.frame = CGRectMake(15, 230, screenWidth-30, 100)
         totalLabel.frame = CGRectMake(15, 330, screenWidth-30, 100)
