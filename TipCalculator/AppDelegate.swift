@@ -36,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
         NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "time")
         NSUserDefaults.standardUserDefaults().synchronize()
-        println(NSDate())
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
@@ -55,10 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let lastDate : NSDate = NSUserDefaults.standardUserDefaults().objectForKey("time") as NSDate
             let currentDate : NSDate = NSDate()
             let interval = currentDate.timeIntervalSinceDate(lastDate)
-            println(currentDate)
-            println(interval/60.0)
-            if interval/60.0 > 10 {
+            if interval/60.0 > 10.0 {
                 NSUserDefaults.standardUserDefaults().removeObjectForKey("bill")
+                NSUserDefaults.standardUserDefaults().synchronize()
             }
         }        
     }

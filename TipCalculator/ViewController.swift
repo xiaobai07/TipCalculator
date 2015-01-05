@@ -22,6 +22,9 @@ class ViewController: UIViewController {
         var swipeGesture = UISwipeGestureRecognizer(target: self, action: "changeBill")
         swipeGesture.direction = UISwipeGestureRecognizerDirection.Left
         self.view.addGestureRecognizer(swipeGesture)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "appBecomeActive:",
+                                                                   name: UIApplicationDidBecomeActiveNotification,
+                                                                 object: nil)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -36,6 +39,13 @@ class ViewController: UIViewController {
         tipSegmentedControl.frame = CGRectMake(15, 200, screenWidth-30, 30)
         tipLabel.frame = CGRectMake(15, 230, screenWidth-30, 100)
         totalLabel.frame = CGRectMake(15, 330, screenWidth-30, 100)
+    }
+    
+    func appBecomeActive(notificaiton : NSNotification) {
+        if NSUserDefaults.standardUserDefaults().objectForKey("bill") == nil {
+            billTextField.text = ""
+            changeUI("")
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -59,10 +69,6 @@ class ViewController: UIViewController {
         tipSegmentedControl.setTitle(String(format: "%.0f",secondValue*100)+"%", forSegmentAtIndex: 1)
         tipSegmentedControl.setTitle(String(format: "%.0f",thirdValue*100)+"%", forSegmentAtIndex: 2)
         changeUI(billTextField.text)
-        if NSUserDefaults.standardUserDefaults().objectForKey("bill") == nil {
-            billTextField.text = ""
-            changeUI("")
-        }
     }
     
     override func viewWillDisappear(animated: Bool) {
