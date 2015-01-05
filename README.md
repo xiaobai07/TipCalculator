@@ -18,6 +18,7 @@ Optional: Add a light/dark color theme to the settings view. In viewWillAppear, 
 
 Notes:
 Add a feature so that swipe left can delete the last number of the bill amout.
+
 ![Alt text](https://github.com/xiaobai07/TipCalculator/blob/master/demo.gif "demo")
 
 
